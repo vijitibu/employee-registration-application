@@ -1,4 +1,4 @@
-import Employee from "../hooks/useEmployees";
+import { Employee } from "../types/Employee";
 
 const STORAGE_KEY = "employees";
 
