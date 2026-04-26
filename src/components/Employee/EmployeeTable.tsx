@@ -1,63 +1,66 @@
 import { Employee } from "../../types/Employee";
 
 type Props = {
-  data: Employee[];
-  onEdit: (emp: Employee) => void;
+  employees: Employee[];
+  onEdit: (employee: Employee) => void;
   onDelete: (id: number) => void;
 };
 
-export default function EmployeeTable({ data, onEdit, onDelete }: Props) {
-  // If no data → show empty UI
-  if (data.length === 0) {
-    return (
-      <div className="bg-white p-6 rounded-xl shadow text-center text-gray-500">
-        <p className="text-lg">No employees added yet</p>
-        <p className="text-sm mt-2">Add your first employee 🚀</p>
-      </div>
-    );
-  }
-
-  //  Show table only when data exists
+export default function EmployeeTable({ employees, onEdit, onDelete }: Props) {
   return (
-    <div className="bg-white p-4 rounded-xl shadow overflow-x-auto">
-      <table className="w-full text-sm">
-        <thead className="bg-gray-100 text-gray-700">
-          <tr>
-            <th className="p-3">Name</th>
-            <th>Email</th>
-            <th>Department</th>
-            <th>Salary</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
+    <div>
+      <h2 className="text-2xl font-semibold mb-6 text-purple-700">
+        Employee Records
+      </h2>
 
-        <tbody>
-          {data.map((emp) => (
-            <tr key={emp.id} className="border-t text-center hover:bg-gray-50">
-              <td className="p-2">{emp.name}</td>
-              <td>{emp.email}</td>
-              <td>{emp.department}</td>
-              <td>{emp.salary}</td>
-
-              <td className="space-x-2">
-                <button
-                  onClick={() => onEdit(emp)}
-                  className="px-2 py-1 bg-blue-500 text-white rounded"
-                >
-                  Edit
-                </button>
-
-                <button
-                  onClick={() => onDelete(emp.id!)}
-                  className="px-2 py-1 bg-red-500 text-white rounded"
-                >
-                  Delete
-                </button>
-              </td>
+      <div className="overflow-x-auto rounded-2xl border border-gray-200">
+        <table className="w-full text-left">
+          <thead className="bg-purple-600 text-white">
+            <tr>
+              <th className="p-4">Name</th>
+              <th className="p-4">Department</th>
+              <th className="p-4">Salary</th>
+              <th className="p-4">Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+
+          <tbody>
+            {employees.length === 0 ? (
+              <tr>
+                <td colSpan={4} className="p-8 text-center text-gray-500">
+                  No employees added yet
+                </td>
+              </tr>
+            ) : (
+              employees.map((emp) => (
+                <tr
+                  key={emp.id}
+                  className="border-b hover:bg-purple-50 transition"
+                >
+                  <td className="p-4">{emp.name}</td>
+                  <td className="p-4">{emp.department}</td>
+                  <td className="p-4">₹ {emp.salary}</td>
+                  <td className="p-4 flex gap-3">
+                    <button
+                      onClick={() => onEdit(emp)}
+                      className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-lg"
+                    >
+                      Edit
+                    </button>
+
+                    <button
+                      onClick={() => onDelete(emp.id)}
+                      className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-lg"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

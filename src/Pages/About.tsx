@@ -30,9 +30,8 @@ export default function About() {
       </div>
 
       {/* Footer */}
-      <p className="text-gray-400 mt-6 text-sm text-center">
-        Built as an Employee registration application using modern web
-        technologies.
+      <p className="text-lg text-gray-600 leading-8">
+        This Employee Portal helps manage employee records with modern tools.
       </p>
     </div>
   );

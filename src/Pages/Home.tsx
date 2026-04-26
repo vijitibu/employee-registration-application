@@ -26,10 +26,13 @@ export default function Home() {
 
   return (
     <div className="grid md:grid-cols-2 gap-6">
-      <EmployeeForm onSave={handleSave} editData={editData} />
-
+      <EmployeeForm
+        key={editData?.id ?? "new"}
+        onSave={handleSave}
+        editData={editData}
+      />
       <EmployeeTable
-        data={employees}
+        employees={employees}
         onEdit={setEditData}
         onDelete={handleDelete}
       />

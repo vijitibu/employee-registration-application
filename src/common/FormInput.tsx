@@ -1,23 +1,29 @@
 type Props = {
-  label: string;
   name: string;
+  label: string;
   value: string | number;
-  type?: "text" | "email" | "number";
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  type?: string;
+  placeholder?: string;
+  min?: number;
+  max?: number;
   error?: string;
 };
 
 export default function FormInput({
-  label,
   name,
+  label,
   value,
-  type = "text",
   onChange,
+  type = "text",
+  placeholder,
+  min,
+  max,
   error,
 }: Props) {
   return (
-    <div className="mb-4">
-      <label className="block mb-1 text-sm font-medium text-gray-700">
+    <div className="mb-5">
+      <label className="block mb-2 text-sm font-medium text-gray-700">
         {label}
       </label>
 
@@ -26,7 +32,10 @@ export default function FormInput({
         type={type}
         value={value}
         onChange={onChange}
-        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+        placeholder={placeholder}
+        min={min}
+        max={max}
+        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500"
       />
 
       {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
