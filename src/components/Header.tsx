@@ -1,49 +1,41 @@
-import { useState } from "react";
-
 export default function Header() {
-  const [open, setOpen] = useState(false);
-
   return (
-    <header className="bg-gradient-to-r from-purple-700 to-indigo-700 text-white shadow-lg sticky top-0 z-50">
-      <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Employee Portal</h1>
-
-        <nav className="hidden md:flex gap-8 font-medium">
-          <a href="#" className="hover:text-yellow-300">
-            Home
-          </a>
-          <a href="#about" className="hover:text-yellow-300">
-            About
-          </a>
-          <a href="#employees" className="hover:text-yellow-300">
-            Employees
-          </a>
-          <a href="#contact" className="hover:text-yellow-300">
-            Contact
-          </a>
-        </nav>
-
-        <button onClick={() => setOpen(!open)} className="md:hidden text-2xl">
-          ☰
-        </button>
-      </div>
-
-      {open && (
-        <div className="md:hidden px-6 pb-4 space-y-3 bg-indigo-700">
-          <a href="#" className="block">
-            Home
-          </a>
-          <a href="#about" className="block">
-            About
-          </a>
-          <a href="#employees" className="block">
-            Employees
-          </a>
-          <a href="#contact" className="block">
-            Contact
-          </a>
+    <header className="bg-linear-to-r from-purple-600 to-indigo-600 text-white shadow-lg sticky top-0">
+      <div className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-bold tracking-wide">
+            Employee Registration Portal
+          </h1>
+          <p className="text-sm opacity-90 mt-1">
+            Manage employee records efficiently
+          </p>
         </div>
-      )}
+
+        <nav>
+          <ul className="flex items-center gap-6 font-medium">
+            <li>
+              <a href="#" className="hover:text-yellow-300 transition">
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="#about" className="hover:text-yellow-300 transition">
+                About
+              </a>
+            </li>
+            <li>
+              <a href="#employees" className="hover:text-yellow-300 transition">
+                Employees
+              </a>
+            </li>
+            <li>
+              <a href="#contact" className="hover:text-yellow-300 transition">
+                Contact
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </header>
   );
 }

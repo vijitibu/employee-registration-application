@@ -25,17 +25,25 @@ export default function Home() {
   };
 
   return (
-    <div className="grid md:grid-cols-2 gap-6">
-      <EmployeeForm
-        key={editData?.id ?? "new"}
-        onSave={handleSave}
-        editData={editData}
-      />
-      <EmployeeTable
-        employees={employees}
-        onEdit={setEditData}
-        onDelete={handleDelete}
-      />
+    <div
+      className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 px-4 sm:px-6 md:px-8
+      py-8 items-start"
+    >
+      <div className="bg-white rounded-3xl shadow-xl p-6 sm:p-8 border border-purple-100">
+        <EmployeeForm
+          key={editData?.id ?? "new"}
+          onSave={handleSave}
+          editData={editData}
+        />
+      </div>
+
+      <div className="bg-white rounded-3xl shadow-xl p-6 sm:p-8 border border-purple-100 overflow-hidden">
+        <EmployeeTable
+          employees={employees}
+          onEdit={setEditData}
+          onDelete={handleDelete}
+        />
+      </div>
     </div>
   );
 }
