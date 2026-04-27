@@ -5,10 +5,12 @@ import Home from "./Pages/Home";
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
 import Employees from "./Pages/Employees";
+import { Toaster } from "react-hot-toast";
 
 export default function App() {
   return (
     <BrowserRouter>
+      <Toaster position="top-right" toastOptions={{ duration: 3000 }} />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
